@@ -184,7 +184,7 @@ export default function Navbar({ theme = "light" }) {
       {/* Desktop Nav (Wrapped in a div for better layout control) */}
       <div className="hidden md:flex items-center gap-12">
         <ul className={`flex items-center gap-8 font-semibold ${linkStyles[theme]}`}>
-          <li className="transition-all cursor-pointer">About</li>
+          {/* <li className="transition-all cursor-pointer">About</li> */}
           <li className="transition-all cursor-pointer">Services</li>
           <li className="transition-all cursor-pointer">Portfolio</li>
           <li className="transition-all cursor-pointer">Testimonials</li>
