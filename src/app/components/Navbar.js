@@ -94,10 +94,14 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// MODIFICATION 1:
+// Added `min-w-0` to allow the flex item to shrink
+// Added `truncate` to add "..." if the text is too long for the container
 const Logo = ({ className = "", theme = "light", logoStyles }) => (
     <div
-        className={`text-2xl md:text-3xl font-extrabold cursor-pointer ${logoStyles[theme]} ${className}`}
+        className={`text-2xl md:text-3xl font-extrabold cursor-pointer ${logoStyles[theme]} ${className} min-w-0 truncate`}
     >
+        {/* MODIFICATION 6: Updated Logo text */}
         Vyomanexgen
     </div>
 );
@@ -153,7 +157,9 @@ export default function Navbar({ theme = "light" }) {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4 flex items-center justify-between transition-all duration-300 ${navStyles[theme]}`}
+            // MODIFICATION 2: Added `w-full`
+            // MODIFICATION 7: Increased vertical padding from py-4 to py-5 for more height
+            className={`fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 py-5 flex items-center justify-between transition-all duration-300 ${navStyles[theme]}`}
         >
             {/* Left side: Logo */}
             <Logo theme={theme} logoStyles={logoStyles} />
@@ -180,9 +186,11 @@ export default function Navbar({ theme = "light" }) {
             <div className="md:hidden flex items-center mr-4">
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
-                    className={`${mobileIconColor[theme]} focus:outline-none`}
+                    // MODIFICATION 4: Added p-2 and rounded-md for a larger tap target
+                    className={`${mobileIconColor[theme]} focus:outline-none p-2 rounded-md`}
                 >
-                    {menuOpen ? <X size={26} /> : <Menu size={26} />}
+                    {/* MODIFICATION 5: Increased icon size slightly */}
+                    {menuOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
             </div>
 
@@ -194,14 +202,16 @@ export default function Navbar({ theme = "light" }) {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className={`fixed top-0 right-0 w-full max-w-xs h-screen flex flex-col items-center justify-start gap-12 p-8 md:hidden ${mobileMenuStyles[theme]}`}
+                        // MODIFICATION 3: Removed `max-w-xs`
+                        className={`fixed top-0 right-0 w-full h-screen flex flex-col items-center justify-start gap-12 p-8 md:hidden ${mobileMenuStyles[theme]}`}
                     >
                         {/* Header in menu */}
                         <div className="w-full flex justify-between items-center">
                             <Logo theme={theme} logoStyles={logoStyles} />
                             <button
+                                // Also added padding here for consistency
                                 onClick={() => setMenuOpen(false)}
-                                className={mobileCloseIconColor[theme]}
+                                className={`${mobileCloseIconColor[theme]} p-2 rounded-md`}
                             >
                                 <X size={28} />
                             </button>
@@ -214,9 +224,9 @@ export default function Navbar({ theme = "light" }) {
                             animate="visible"
                         >
                             <motion.li variants={itemVariants}>
-                                <a href="#about" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>
+                                {/* <a href="#about" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>
                                     About
-                                </a>
+                                </a> */}
                             </motion.li>
                             <motion.li variants={itemVariants}>
                                 <a href="#services" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>
@@ -254,3 +264,4 @@ export default function Navbar({ theme = "light" }) {
         </nav>
     );
 }
+
