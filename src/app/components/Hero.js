@@ -82,7 +82,7 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="flex flex-wrap gap-6 justify-center"
         >
-          <motion.button
+          <motion.button href="/services"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             // This is an infinite loop, so 'animate' is correct here
@@ -93,7 +93,7 @@ export default function Hero() {
             Explore Services
           </motion.button>
 
-          <motion.button
+          <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             // This is an infinite loop, so 'animate' is correct here

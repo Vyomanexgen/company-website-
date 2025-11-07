@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 import {
   Palette,
   LayoutDashboard,
@@ -15,7 +15,6 @@ import {
   Play,
   Box,
   Rocket,
-  // CRM and AI icons
   Users,
   Workflow,
   BarChart3,
@@ -23,100 +22,83 @@ import {
   BrainCircuit,
   MessageSquare,
   Network,
-  // NEW UI/UX Icons
   Figma,
   PenTool,
   MousePointer2,
   Accessibility,
-} from 'lucide-react';
+} from "lucide-react";
 
 // --- Theme Definitions ---
-// We define our color themes here to easily pass them to components.
 const colorThemes = {
   blue: {
-    // Text
-    title: 'text-blue-400',
-    subtitle: 'text-blue-300',
-    tagBG: 'bg-blue-900/40',
-    tagText: 'text-blue-300',
-    tagBorder: 'border-blue-700',
-    // Icon
-    iconBase: 'bg-blue-900/30 text-blue-400 border-blue-700/50',
-    iconHover: 'hover:shadow-[0_0_20px_rgba(96,165,250,0.8)] hover:bg-blue-600 hover:text-white',
-    // Placeholder
-    placeholderBorder: 'border-blue-500',
-    placeholderShadow: 'shadow-[0_0_20px_rgba(59,130,246,0.5)]',
-    placeholderBG: 'bg-blue-900/20',
+    title: "text-blue-400",
+    subtitle: "text-blue-300",
+    tagBG: "bg-blue-900/40",
+    tagText: "text-blue-300",
+    tagBorder: "border-blue-700",
+    iconBase: "bg-blue-900/30 text-blue-400 border-blue-700/50",
+    iconHover:
+      "hover:shadow-[0_0_20px_rgba(96,165,250,0.8)] hover:bg-blue-600 hover:text-white",
+    placeholderBorder: "border-blue-500",
+    placeholderShadow: "shadow-[0_0_20px_rgba(59,130,246,0.5)]",
+    placeholderBG: "bg-blue-900/20",
   },
-  // NEW THEME for UI/UX
   pink: {
-    // Text
-    title: 'text-pink-400',
-    subtitle: 'text-pink-300',
-    tagBG: 'bg-pink-900/40',
-    tagText: 'text-pink-300',
-    tagBorder: 'border-pink-700',
-    // Icon
-    iconBase: 'bg-pink-900/30 text-pink-400 border-pink-700/50',
-    iconHover: 'hover:shadow-[0_0_20px_rgba(244,114,182,0.8)] hover:bg-pink-600 hover:text-white',
-    // Placeholder
-    placeholderBorder: 'border-pink-500',
-    placeholderShadow: 'shadow-[0_0_20px_rgba(236,72,153,0.5)]',
-    placeholderBG: 'bg-pink-900/20',
+    title: "text-pink-400",
+    subtitle: "text-pink-300",
+    tagBG: "bg-pink-900/40",
+    tagText: "text-pink-300",
+    tagBorder: "border-pink-700",
+    iconBase: "bg-pink-900/30 text-pink-400 border-pink-700/50",
+    iconHover:
+      "hover:shadow-[0_0_20px_rgba(244,114,182,0.8)] hover:bg-pink-600 hover:text-white",
+    placeholderBorder: "border-pink-500",
+    placeholderShadow: "shadow-[0_0_20px_rgba(236,72,153,0.5)]",
+    placeholderBG: "bg-pink-900/20",
   },
   gradient: {
-    // Text (Tailwind equivalent of your CSS)
-    title: 'bg-gradient-to-r from-teal-400 via-indigo-500 to-fuchsia-500 bg-clip-text text-transparent',
-    subtitle: 'text-indigo-300',
-    tagBG: 'bg-indigo-900/40',
-    tagText: 'text-indigo-300',
-    tagBorder: 'border-indigo-700',
-    // Icon
-    iconBase: 'bg-indigo-900/30 text-indigo-400 border-indigo-700/50',
-    iconHover: 'hover:shadow-[0_0_20px_rgba(129,140,248,0.8)] hover:bg-indigo-600 hover:text-white',
-    // Placeholder
-    placeholderBorder: 'border-indigo-500',
-    placeholderShadow: 'shadow-[0_0_20px_rgba(129,140,248,0.5)]',
-    placeholderBG: 'bg-indigo-900/20',
+    title:
+      "bg-gradient-to-r from-teal-400 via-indigo-500 to-fuchsia-500 bg-clip-text text-transparent",
+    subtitle: "text-indigo-300",
+    tagBG: "bg-indigo-900/40",
+    tagText: "text-indigo-300",
+    tagBorder: "border-indigo-700",
+    iconBase: "bg-indigo-900/30 text-indigo-400 border-indigo-700/50",
+    iconHover:
+      "hover:shadow-[0_0_20px_rgba(129,140,248,0.8)] hover:bg-indigo-600 hover:text-white",
+    placeholderBorder: "border-indigo-500",
+    placeholderShadow: "shadow-[0_0_20px_rgba(129,140,248,0.5)]",
+    placeholderBG: "bg-indigo-900/20",
   },
   violet: {
-    // Text
-    title: 'text-purple-400',
-    subtitle: 'text-purple-300',
-    tagBG: 'bg-purple-900/40',
-    tagText: 'text-purple-300',
-    tagBorder: 'border-purple-700',
-    // Icon
-    iconBase: 'bg-purple-900/30 text-purple-400 border-purple-700/50',
-    iconHover: 'hover:shadow-[0_0_20px_rgba(192,132,252,0.8)] hover:bg-purple-600 hover:text-white',
-    // Placeholder
-    placeholderBorder: 'border-purple-700',
-    placeholderShadow: 'shadow-[0_0_20px_rgba(168,85,247,0.5)]',
-    placeholderBG: 'bg-purple-900/20',
+    title: "text-purple-400",
+    subtitle: "text-purple-300",
+    tagBG: "bg-purple-900/40",
+    tagText: "text-purple-300",
+    tagBorder: "border-purple-700",
+    iconBase: "bg-purple-900/30 text-purple-400 border-purple-700/50",
+    iconHover:
+      "hover:shadow-[0_0_20px_rgba(192,132,252,0.8)] hover:bg-purple-600 hover:text-white",
+    placeholderBorder: "border-purple-700",
+    placeholderShadow: "shadow-[0_0_20px_rgba(168,85,247,0.5)]",
+    placeholderBG: "bg-purple-900/20",
   },
   green: {
-    // Text
-    title: 'text-green-400',
-    subtitle: 'text-green-300',
-    tagBG: 'bg-green-900/40',
-    tagText: 'text-green-300',
-    tagBorder: 'border-green-700',
-    // Icon
-    iconBase: 'bg-green-900/30 text-green-400 border-green-700/50',
-    iconHover: 'hover:shadow-[0_0_20px_rgba(74,222,128,0.8)] hover:bg-green-600 hover:text-white',
-    // Placeholder
-    placeholderBorder: 'border-green-500',
-    placeholderShadow: 'shadow-[0_0_20px_rgba(74,222,128,0.5)]',
-    placeholderBG: 'bg-green-900/20',
+    title: "text-green-400",
+    subtitle: "text-green-300",
+    tagBG: "bg-green-900/40",
+    tagText: "text-green-300",
+    tagBorder: "border-green-700",
+    iconBase: "bg-green-900/30 text-green-400 border-green-700/50",
+    iconHover:
+      "hover:shadow-[0_0_20px_rgba(74,222,128,0.8)] hover:bg-green-600 hover:text-white",
+    placeholderBorder: "border-green-500",
+    placeholderShadow: "shadow-[0_0_20px_rgba(74,222,128,0.5)]",
+    placeholderBG: "bg-green-900/20",
   },
 };
 
 
-// --- Animated SVG Placeholders ---
-
-/**
- * 1. Placeholder for "Web & Mobile Designing"
- */
 const WebDesignPlaceholder = ({ theme = 'blue' }) => {
   const themeClasses = colorThemes[theme] || colorThemes.blue;
   return (
@@ -664,15 +646,10 @@ const FeatureItem = ({ icon: Icon, title, description, theme = 'violet' }) => {
         whileHover={{
           scale: 1.15,
         }}
-        // We apply the hover classes directly via Tailwind
-        // and Framer Motion handles the scale transition.
-        // The `iconHover` string contains `hover:bg-...`, etc.
+        
         transition={{ type: 'spring', stiffness: 300 }}
       >
-        {/* We need a nested motion.div for the hover classes to apply correctly
-            because Framer Motion's `whileHover` overrides Tailwind's `hover:`.
-            This is a common pattern.
-        */}
+      
         <motion.div 
           className={`w-full h-full flex items-center justify-center rounded-lg ${themeClasses.iconHover}`}
         >
@@ -692,7 +669,7 @@ const FeatureItem = ({ icon: Icon, title, description, theme = 'violet' }) => {
 // --- Main Services Component ---
 export default function ServicesApp() {
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-200 font-inter p-8 md:p-16">
+  <div id="services-section" className="min-h-screen bg-gray-950 text-gray-200 font-inter p-8 pt-32 md:p-16">
       <div className="max-w-7xl mx-auto">
         {/* UPDATED: Title changed to "Services" with new blue/violet gradient and hover effect */}
         <motion.h1 
@@ -764,5 +741,6 @@ export default function ServicesApp() {
       </div>
     </div>
   );
+  
 }
 

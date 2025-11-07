@@ -1,267 +1,332 @@
 // "use client";
 // import React, { useState } from "react";
 // import { Menu, X } from "lucide-react";
-// import Link from "next/link";
-// import { motion } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
+// import Link from "next/link"; 
 
-// export default function Navbar() {
+// const Logo = ({ className = "", theme = "light", logoStyles }) => (
+//   <Link
+//     href="/"
+//     className={`text-2xl md:text-3xl font-extrabold cursor-pointer ${logoStyles[theme]} ${className} min-w-0 truncate`}
+//   >
+//     Vyomanexgen
+//   </Link>
+// );
+
+// export default function Navbar({ theme = "light" }) {
 //   const [menuOpen, setMenuOpen] = useState(false);
 
+//   const navStyles = {
+//     light: "bg-white/70 backdrop-blur-md border-gray-200 shadow-sm",
+//     dark: "bg-gray-950/80 backdrop-blur-md border-gray-700 shadow-lg",
+//   };
+
+//   const linkStyles = {
+//     light: "text-gray-700 hover:text-cyan-600",
+//     dark: "text-gray-300 hover:text-cyan-400",
+//   };
+
+//   const mobileIconColor = {
+//     light: "text-gray-900",
+//     dark: "text-white",
+//   };
+
+//   const logoStyles = {
+//     light: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500",
+//     dark: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400",
+//   };
+
+//   const mobileMenuStyles = {
+//     light: "bg-white shadow-2xl",
+//     dark: "bg-gray-950 shadow-2xl",
+//   };
+
+//   const mobileLinkStyles = {
+//     light: "text-gray-700 hover:text-cyan-600",
+//     dark: "text-gray-300 hover:text-cyan-400",
+//   };
+
+//   const mobileCloseIconColor = {
+//     light: "text-gray-700 hover:text-black",
+//     dark: "text-gray-400 hover:text-white",
+//   };
+
 //   const menuVariants = {
-//     hidden: { opacity: 0, y: -20 },
-//     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+//     hidden: { opacity: 0, x: "100%" },
+//     visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeInOut" } },
+//     exit: { opacity: 0, x: "100%", transition: { duration: 0.3, ease: "easeInOut" } },
+//   };
+
+//   const itemVariants = {
+//     hidden: { opacity: 0, y: 20 },
+//     visible: { opacity: 1, y: 0 },
 //   };
 
 //   return (
-//     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md border-b border-gray-200 px-6 md:px-12 py-5 flex justify-between items-center shadow-sm">
-//       {/* Logo */}
-//       <div className="text-xl md:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 cursor-pointer">
-//         Vyomanexgen
+//     <nav className={`fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 py-5 flex items-center justify-between transition-all duration-300 ${navStyles[theme]}`}>
+      
+//       {/* ✅ Logo */}
+//       <Logo theme={theme} logoStyles={logoStyles} />
+
+//       {/* ✅ Desktop Menu */}
+//       <div className="hidden md:flex items-center gap-10">
+//         <ul className={`flex items-center gap-8 font-semibold ${linkStyles[theme]}`}>
+//           <li><Link href="/services">Services</Link></li>
+//           <li><Link href="/portfolio">Portfolio</Link></li>
+
+//           {/* ✅ Careers added */}
+//           <li><Link href="/careers">Careers</Link></li>
+
+//           <li><Link href="/testimonials">Testimonials</Link></li>
+//           <li><Link href="/contact">Contact</Link></li>
+//         </ul>
+
+//         <motion.button
+//           whileHover={{ scale: 1.08 }}
+//           whileTap={{ scale: 0.95 }}
+//           className="bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
+//         >
+//           Get Started
+//         </motion.button>
 //       </div>
 
-//       {/* Desktop Nav */}
-//       <ul className="hidden md:flex items-center gap-8 text-gray-700 font-semibold">
-//         <li className="hover:text-cyan-600 transition-all cursor-pointer">About</li>
-//         <li className="hover:text-cyan-600 transition-all cursor-pointer">Services</li>
-//         <li className="hover:text-cyan-600 transition-all cursor-pointer">Portfolio</li>
-//         <li className="hover:text-cyan-600 transition-all cursor-pointer">Testimonials</li>
-//         <li className="hover:text-cyan-600 transition-all cursor-pointer">Contact</li>
-//       </ul>
-
-//       {/* Desktop Button */}
-//       <motion.button
-//         whileHover={{ scale: 1.08 }}
-//         whileTap={{ scale: 0.95 }}
-//         className="hidden md:block bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
-//       >
-//         Get Started
-//       </motion.button>
-
-//       {/* Mobile Menu Button */}
-//       <div className="md:hidden">
-//         <button onClick={() => setMenuOpen(!menuOpen)}>
-//           {menuOpen ? <X size={26} /> : <Menu size={26} />}
+//       {/* ✅ Mobile Menu Button */}
+//       <div className="md:hidden flex items-center mr-4">
+//         <button
+//           onClick={() => setMenuOpen(!menuOpen)}
+//           className={`${mobileIconColor[theme]} focus:outline-none p-2 rounded-md`}
+//         >
+//           {menuOpen ? <X size={28} /> : <Menu size={28} />}
 //         </button>
 //       </div>
 
-//       {/* Mobile Menu */}
-//       {menuOpen && (
-//         <motion.div
-//           variants={menuVariants}
-//           initial="hidden"
-//           animate="visible"
-//           className="absolute top-0 left-0 w-full h-screen bg-white/95 flex flex-col items-center justify-center gap-8 text-lg font-semibold text-gray-700 md:hidden"
-//         >
-//           <button
-//             onClick={() => setMenuOpen(false)}
-//             className="absolute top-6 right-6 text-gray-700"
+//       {/* ✅ Mobile Slide Menu */}
+//       <AnimatePresence>
+//         {menuOpen && (
+//           <motion.div
+//             variants={menuVariants}
+//             initial="hidden"
+//             animate="visible"
+//             exit="exit"
+//             className={`fixed top-0 right-0 w-full h-screen flex flex-col items-center justify-start gap-12 p-8 md:hidden ${mobileMenuStyles[theme]}`}
 //           >
-//             <X size={28} />
-//           </button>
+            
+//             {/* Close + Logo */}
+//             <div className="w-full flex justify-between items-center">
+//               <Logo theme={theme} logoStyles={logoStyles} />
+//               <button
+//                 onClick={() => setMenuOpen(false)}
+//                 className={`${mobileCloseIconColor[theme]} p-2 rounded-md`}
+//               >
+//                 <X size={28} />
+//               </button>
+//             </div>
 
-//           <Link href="#about" onClick={() => setMenuOpen(false)}>
-//             About
-//           </Link>
-//           <Link href="#services" onClick={() => setMenuOpen(false)}>
-//             Services
-//           </Link>
-//           <Link href="#portfolio" onClick={() => setMenuOpen(false)}>
-//             Portfolio
-//           </Link>
-//           <Link href="#testimonials" onClick={() => setMenuOpen(false)}>
-//             Testimonials
-//           </Link>
-//           <Link href="#contact" onClick={() => setMenuOpen(false)}>
-//             Contact
-//           </Link>
+//             {/* Mobile Links */}
+//             <motion.ul
+//               className={`flex flex-col items-center justify-center gap-8 text-2xl font-semibold`}
+//               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
+//               initial="hidden"
+//               animate="visible"
+//             >
+//               <motion.li variants={itemVariants}><Link href="/services" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>Services</Link></motion.li>
+//               <motion.li variants={itemVariants}><Link href="/portfolio" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>Portfolio</Link></motion.li>
 
-//           <motion.button
-//             whileHover={{ scale: 1.08 }}
-//             whileTap={{ scale: 0.95 }}
-//             className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
-//           >
-//             Get Started
-//           </motion.button>
-//         </motion.div>
-//       )}
+//               {/* ✅ Careers added */}
+//               <motion.li variants={itemVariants}><Link href="/careers" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>Careers</Link></motion.li>
+
+//               <motion.li variants={itemVariants}><Link href="/testimonials" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>Testimonials</Link></motion.li>
+//               <motion.li variants={itemVariants}><Link href="/contact" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>Contact</Link></motion.li>
+//             </motion.ul>
+
+//             <motion.button
+//               variants={itemVariants}
+//               whileHover={{ scale: 1.08 }}
+//               whileTap={{ scale: 0.95 }}
+//               className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
+//             >
+//               Get Started
+//             </motion.button>
+
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
 //     </nav>
 //   );
 // }
 
 
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
-// MODIFICATION 1:
-// Added `min-w-0` to allow the flex item to shrink
-// Added `truncate` to add "..." if the text is too long for the container
+
+
 const Logo = ({ className = "", theme = "light", logoStyles }) => (
-    <div
-        className={`text-2xl md:text-3xl font-extrabold cursor-pointer ${logoStyles[theme]} ${className} min-w-0 truncate`}
-    >
-        {/* MODIFICATION 6: Updated Logo text */}
-        Vyomanexgen
-    </div>
+  <Link
+    href="/"
+    className={`text-2xl md:text-3xl font-extrabold cursor-pointer ${logoStyles[theme]} ${className}`}
+  >
+    Vyomanexgen
+  </Link>
 );
 
-export default function Navbar({ theme = "light" }) {
-    const [menuOpen, setMenuOpen] = useState(false);
 
-    const navStyles = {
-        light: "bg-white/70 backdrop-blur-md border-gray-200 shadow-sm",
-        dark: "bg-gray-950/80 backdrop-blur-md border-gray-700 shadow-lg",
-    };
 
-    const linkStyles = {
-        light: "text-gray-700 hover:text-cyan-600",
-        dark: "text-gray-300 hover:text-cyan-400",
-    };
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState("light");
+  useEffect(() => {
+  const section = document.getElementById("services-section");
+  console.log("Found services-section:", section); // ✅ check if detected
 
-    const mobileIconColor = {
-        light: "text-gray-900",
-        dark: "text-white",
-    };
+  if (!section) return;
 
-    const logoStyles = {
-        light: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500",
-        dark: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400",
-    };
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      console.log("Is services visible:", entry.isIntersecting); // ✅ check when switching
+      setTheme(entry.isIntersecting ? "dark" : "light");
+    },
+    { threshold: 0.15 }
+  );
 
-    const mobileMenuStyles = {
-        light: "bg-white shadow-2xl",
-        dark: "bg-gray-950 shadow-2xl",
-    };
+  observer.observe(section);
+  return () => observer.disconnect();
+}, []);
 
-    const mobileLinkStyles = {
-        light: "text-gray-700 hover:text-cyan-600",
-        dark: "text-gray-300 hover:text-cyan-400",
-    };
+useEffect(() => {
+  const section = document.getElementById("services-section");
+  if (!section) return;
 
-    const mobileCloseIconColor = {
-        light: "text-gray-700 hover:text-black",
-        dark: "text-gray-400 hover:text-white",
-    };
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setTheme(entry.isIntersecting ? "dark" : "light");
+    },
+    {
+      threshold: 0.05,          // Detect minimal visibility
+      rootMargin: "-100px 0px -50% 0px" // Detect earlier (adjusts for navbar height)
+    }
+  );
 
-    const menuVariants = {
-        hidden: { opacity: 0, x: "100%" },
-        visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeInOut" } },
-        exit: { opacity: 0, x: "100%", transition: { duration: 0.3, ease: "easeInOut" } },
-    };
+  observer.observe(section);
+  return () => observer.disconnect();
+}, []);
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-    };
 
-    return (
-        <nav
-            // MODIFICATION 2: Added `w-full`
-            // MODIFICATION 7: Increased vertical padding from py-4 to py-5 for more height
-            className={`fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 py-5 flex items-center justify-between transition-all duration-300 ${navStyles[theme]}`}
-        >
-            {/* Left side: Logo */}
-            <Logo theme={theme} logoStyles={logoStyles} />
+  // ✅ Detect when Services section enters view
+  useEffect(() => {
+    const section = document.getElementById("services-section");
+    if (!section) return;
 
-            {/* Right side: Desktop Menu */}
-            <div className="hidden md:flex items-center gap-10">
-                <ul className={`flex items-center gap-8 font-semibold ${linkStyles[theme]}`}>
-                    <li className="cursor-pointer transition-all">Services</li>
-                    <li className="cursor-pointer transition-all">Portfolio</li>
-                    <li className="cursor-pointer transition-all">Testimonials</li>
-                    <li className="cursor-pointer transition-all">Contact</li>
-                </ul>
-
-                <motion.button
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
-                >
-                    Get Started
-                </motion.button>
-            </div>
-
-            {/* Mobile Hamburger Button */}
-            <div className="md:hidden flex items-center mr-4">
-                <button
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    // MODIFICATION 4: Added p-2 and rounded-md for a larger tap target
-                    className={`${mobileIconColor[theme]} focus:outline-none p-2 rounded-md`}
-                >
-                    {/* MODIFICATION 5: Increased icon size slightly */}
-                    {menuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-            </div>
-
-            {/* Mobile Menu */}
-            <AnimatePresence>
-                {menuOpen && (
-                    <motion.div
-                        variants={menuVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        // MODIFICATION 3: Removed `max-w-xs`
-                        className={`fixed top-0 right-0 w-full h-screen flex flex-col items-center justify-start gap-12 p-8 md:hidden ${mobileMenuStyles[theme]}`}
-                    >
-                        {/* Header in menu */}
-                        <div className="w-full flex justify-between items-center">
-                            <Logo theme={theme} logoStyles={logoStyles} />
-                            <button
-                                // Also added padding here for consistency
-                                onClick={() => setMenuOpen(false)}
-                                className={`${mobileCloseIconColor[theme]} p-2 rounded-md`}
-                            >
-                                <X size={28} />
-                            </button>
-                        </div>
-
-                        <motion.ul
-                            className={`flex flex-col items-center justify-center gap-8 text-2xl font-semibold ${mobileLinkStyles[theme]}`}
-                            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
-                            initial="hidden"
-                            animate="visible"
-                        >
-                            <motion.li variants={itemVariants}>
-                                {/* <a href="#about" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>
-                                    About
-                                </a> */}
-                            </motion.li>
-                            <motion.li variants={itemVariants}>
-                                <a href="#services" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>
-                                    Services
-                                </a>
-                            </motion.li>
-                            <motion.li variants={itemVariants}>
-                                <a href="#portfolio" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>
-                                    Portfolio
-                                </a>
-                            </motion.li>
-                            <motion.li variants={itemVariants}>
-                                <a href="#testimonials" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>
-                                    Testimonials
-                                </a>
-                            </motion.li>
-                            <motion.li variants={itemVariants}>
-                                <a href="#contact" onClick={() => setMenuOpen(false)} className={mobileLinkStyles[theme]}>
-                                    Contact
-                                </a>
-                            </motion.li>
-                        </motion.ul>
-
-                        <motion.button
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.08 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
-                        >
-                            Get Started
-                        </motion.button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </nav>
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setTheme(entry.isIntersecting ? "dark" : "light");
+      },
+      { threshold: 0.25 } // change when 25% visible
     );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  const navStyles = {
+    light: "bg-white/70 backdrop-blur-md border-b border-gray-200 shadow-sm",
+    dark: "bg-gray-950/80 backdrop-blur-md border-b border-gray-700 shadow-lg",
+  };
+
+  const linkStyles = {
+    light: "text-gray-700 hover:text-cyan-600",
+    dark: "text-gray-300 hover:text-cyan-400",
+  };
+
+  const logoStyles = {
+    light:
+      "text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500",
+    dark:
+      "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400",
+  };
+
+  const mobileMenuStyles = {
+    light: "bg-white shadow-2xl",
+    dark: "bg-gray-950 shadow-2xl",
+  };
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 py-5 flex items-center justify-between transition-all duration-500 ${navStyles[theme]}`}
+    >
+      {/* Logo */}
+      <Logo theme={theme} logoStyles={logoStyles} />
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex items-center gap-10">
+  <ul className={`flex items-center gap-8 font-semibold ${linkStyles[theme]}`}>
+    <li><Link href="/services">Services</Link></li>
+    <li><Link href="/projects">Portfolio</Link></li>
+    <li><Link href="/careers">Careers</Link></li>
+    <li><Link href="/testimonials">Testimonials</Link></li>
+    <li><Link href="/contact">Contact</Link></li>
+  </ul>
+
+<motion.button
+  whileHover={{ scale: 1.08 }}
+  whileTap={{ scale: 0.95 }}
+  className="bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
+>
+  Get Started
+</motion.button>
+
+
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="md:hidden p-2"
+      >
+        {menuOpen ? <X size={28} className={linkStyles[theme]} /> : <Menu size={28} className={linkStyles[theme]} />}
+      </button>
+
+      {/* Mobile Slide Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "100%", opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className={`fixed top-0 right-0 w-full h-screen flex flex-col items-center justify-start gap-12 p-8 md:hidden ${mobileMenuStyles[theme]}`}
+          >
+            {/* Close Button */}
+            <div className="w-full flex justify-between items-center">
+              <Logo theme={theme} logoStyles={logoStyles} />
+              <button onClick={() => setMenuOpen(false)}>
+                <X size={28} className={linkStyles[theme]} />
+              </button>
+            </div>
+
+         <ul className="flex flex-col items-center gap-8 text-2xl font-semibold">
+  <li><Link href="/services" onClick={() => setMenuOpen(false)}>Services</Link></li>
+  <li><Link href="/portfolio" onClick={() => setMenuOpen(false)}>Portfolio</Link></li>
+  <li><Link href="/careers" onClick={() => setMenuOpen(false)}>Careers</Link></li>
+  <li><Link href="/testimonials" onClick={() => setMenuOpen(false)}>Testimonials</Link></li>
+  <li><Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
+</ul>
+
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
+            >
+              Get Started
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
 }
 
