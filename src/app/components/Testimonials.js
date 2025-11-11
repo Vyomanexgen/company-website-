@@ -54,7 +54,7 @@ export default function Testimonials() {
   const parallaxY = useTransform(scrollY, [0, 500], [0, 160]);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-black text-white">
+    <section id="testimonials-section"  className="relative w-full min-h-screen overflow-hidden bg-black text-white">
       
       {/* Parallax Layer */}
       <motion.div

@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { FaLinkedinIn, FaTwitter, FaGithub, FaFacebookF,FaMapMarkerAlt, FaPhoneAlt, FaEnvelope  } from "react-icons/fa";
+import Link from "next/link";
 
 
 export default function Footer() {
@@ -75,18 +76,48 @@ export default function Footer() {
         </div>
 
         {/* Services */}
-        <div>
-          <h4 className="text-lg font-semibold mb-4">Services</h4>
-          <ul className="space-y-2 text-sm">
-            <li>UI/UX Design</li>
-            <li>Web Development</li>
-            <li>Mobile Apps</li>
-            <li>CRM Solutions</li>
-            <li>Billing Software</li>
-            <li>AI Chatbots</li>
-            <li>AI Calling Agent</li>
-          </ul>
-        </div>
+       <div>
+  <h4 className="text-lg font-semibold mb-4">Services</h4>
+  <ul className="space-y-2 text-sm">
+    <li>
+      <Link href="/services/ui-ux" className="hover:text-cyan-500 transition">
+        UI/UX Design
+      </Link>
+    </li>
+    <li>
+      <Link href="/services/web-development" className="hover:text-cyan-500 transition">
+        Web Development
+      </Link>
+    </li>
+    <li>
+      <Link href="/services/mobile-apps" className="hover:text-cyan-500 transition">
+        Mobile Apps
+      </Link>
+    </li>
+    <li>
+      <Link href="/services/crm" className="hover:text-cyan-500 transition">
+        CRM Solutions
+      </Link>
+    </li>
+    <li>
+      <Link href="/services/billing-software" className="hover:text-cyan-500 transition">
+        Billing Software
+      </Link>
+    </li>
+    <li>
+      <Link href="/services/ai-chatbots" className="hover:text-cyan-500 transition">
+        AI Chatbots
+      </Link>
+    </li>
+    <li>
+      <Link href="/services/ai-sms-calling-agents" className="hover:text-cyan-500 transition">
+      AI SMS/Calling Agents
+      </Link>
+    </li>
+   
+  </ul>
+</div>
+
 
         {/* Company */}
         <div>
@@ -137,7 +168,7 @@ export default function Footer() {
         viewport={{ once: false, amount: 0.3 }}
         className="border-t border-gray-300 mt-12 pt-6 text-center text-sm text-gray-600"
       >
-        <p>© 2025 SGTRATUP. All rights reserved.</p>
+        <p>© 2025 vyomanexgen. All rights reserved.</p>
 
         <div className="flex justify-center gap-6 mt-3">
           <a href="#" className="hover:text-[#6E45E2]">Privacy Policy</a>

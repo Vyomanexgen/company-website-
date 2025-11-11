@@ -531,7 +531,7 @@ export default function Careers() {
         <h2 className="text-4xl font-extrabold text-gray-800">Open Positions</h2>
 
         {/* ✅ Rebuilt Liquid Glass Switch for smooth sliding animation */}
-        <div className="relative mt-8 inline-flex items-center backdrop-blur-xl bg-white/25 border border-white/40 rounded-full shadow-lg p-2">
+        <div className="relative mt-8 inline-flex items-center backdrop-blur-xl bg-white/25 border border-white/40 rounded-full shadow-lg p-2 ">
           <button
             onClick={() => setTab("jobs")}
             className="relative px-6 py-2 rounded-full font-medium"

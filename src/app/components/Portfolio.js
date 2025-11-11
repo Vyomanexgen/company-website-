@@ -221,7 +221,7 @@ export default function Portfolio() {
   const projectsToShow = selectedTab === "Completed" ? completedProjects : ongoingProjects;
 
   return (
-    <section className="py-16 sm:py-20 bg-slate-50 pt-20 sm:pt-24">
+    <section id="portfolio-section" className="py-16 sm:py-20 bg-slate-50 pt-20 sm:pt-24">
       <Navbar theme="light" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
