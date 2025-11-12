@@ -8,7 +8,7 @@ import {
   FaEnvelope,
   FaInstagram,
 } from "react-icons/fa";
-import { FaThreads } from "react-icons/fa6"; // ✅ Import Threads icon
+import { FaThreads } from "react-icons/fa6"; // ✅ Threads icon
 import Link from "next/link";
 
 export default function Footer() {
@@ -29,7 +29,7 @@ export default function Footer() {
             challenges.
           </p>
 
-          {/* Social Icons */}
+          {/* ✅ Social Icons */}
           <div className="flex items-center gap-4 mt-6">
             {/* LinkedIn */}
             <motion.a
@@ -43,7 +43,8 @@ export default function Footer() {
             >
               <FaLinkedinIn size={18} />
             </motion.a>
-             {/* Instagram */}
+
+            {/* Instagram */}
             <motion.a
               whileHover={{ y: -6, boxShadow: "0 0 25px rgba(110,69,226,0.6)" }}
               transition={{ type: "spring", stiffness: 280 }}
@@ -56,7 +57,7 @@ export default function Footer() {
               <FaInstagram size={18} />
             </motion.a>
 
-            {/* Threads */}
+            {/* Threads (used instead of Twitter/X) */}
             <motion.a
               whileHover={{ y: -6, boxShadow: "0 0 25px rgba(110,69,226,0.6)" }}
               transition={{ type: "spring", stiffness: 280 }}
@@ -68,8 +69,6 @@ export default function Footer() {
             >
               <FaThreads size={18} />
             </motion.a>
-
-           
 
             {/* Facebook */}
             <motion.a
@@ -147,7 +146,7 @@ export default function Footer() {
             <li className="flex items-start gap-3">
               <FaMapMarkerAlt className="text-[#6E45E2] flex-shrink-0 mt-1" size={22} />
               <span className="leading-relaxed">
-                satyabama complex, 301, KPHB Main Rd, opposite sai baba temple,
+                Satyabama Complex, 301, KPHB Main Rd, Opposite Sai Baba Temple,
                 Bhagya Nagar Colony, Hyderabad, Telangana 500072
               </span>
             </li>
