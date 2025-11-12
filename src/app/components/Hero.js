@@ -2,6 +2,7 @@
 
 // 1. Remove useAnimation and useEffect
 import { motion } from "framer-motion";
+import Link from "next/link";
 // No longer need: import { useEffect } from "react";
 
 export default function Hero() {
@@ -82,27 +83,30 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="flex flex-wrap gap-6 justify-center"
         >
-          <motion.button href="/services"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            // This is an infinite loop, so 'animate' is correct here
-            animate={{ scale: [1, 1.05, 1] }} 
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 rounded-lg text-lg font-semibold text-white shadow-md"
-          >
-            Explore Services
-          </motion.button>
-
-          <motion.button 
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            // This is an infinite loop, so 'animate' is correct here
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="border border-cyan-500 px-8 py-3 rounded-lg text-lg font-semibold text-cyan-600 hover:bg-cyan-50"
-          >
-            Let’s Talk 💬
-          </motion.button>
+        <Link href="/#services-section">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              // This is an infinite loop, so 'animate' is correct here
+              animate={{ scale: [1, 1.05, 1] }} 
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 rounded-lg text-lg font-semibold text-white shadow-md"
+            >
+              Explore Services
+            </motion.button>
+          </Link>
+<Link href="/contact">
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            // This is an infinite loop, so 'animate' is correct here
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            className="border border-cyan-500 px-8 py-3 rounded-lg text-lg font-semibold text-cyan-600 hover:bg-cyan-50"
+            >
+              Let’s Talk 💬
+            </motion.button>
+          </Link>
         </motion.div>
       </section>
 
