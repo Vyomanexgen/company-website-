@@ -57,7 +57,7 @@ export default function Footer() {
     className="w-10 h-10 flex items-center justify-center rounded-full 
     bg-gradient-to-r from-[#6E45E2] to-[#B34BF8] text-white cursor-pointer shadow-md"
   >
-    <FaGithub size={18} />
+    <FaFacebook size={18} />
   </motion.a>
 
   <motion.a
