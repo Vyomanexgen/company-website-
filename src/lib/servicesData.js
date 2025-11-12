@@ -3,6 +3,39 @@
 export const servicesDetailData = {
   // ... other services
 
+
+  "ui-ux": {
+    title: "UI/UX Design",
+    subtitle: "Creating Intuitive & Stunning User Experiences",
+    theme: "pink",
+    icon: "Palette",
+    overview:
+      "Our UI/UX design services focus on creating beautiful, intuitive interfaces that provide exceptional user experiences. We combine aesthetic excellence with functional design to deliver products that users love.",
+    features: [
+      "User Research & Analysis",
+      "Wireframing & Prototyping",
+      "Responsive Design",
+      "Mobile-First Approach",
+      "Usability Testing",
+      "Design System Creation",
+      "Interaction Design",
+      "Visual Design",
+    ],
+    benefits: [
+      { title: "Increased User Engagement", text: "Tangible improvements in product adoption and retention." },
+      { title: "Higher Conversion Rates", text: "Design decisions that drive business outcomes." },
+      { title: "Reduced Development Costs", text: "Catch UX issues early with prototypes and testing." },
+      { title: "Better Brand Recognition", text: "Consistent, memorable design systems." },
+    ],
+    process: [
+      { step: 1, title: "Discovery", text: "Understand business goals and user needs." },
+      { step: 2, title: "Research", text: "Analyze competitors and best practices." },
+      { step: 3, title: "Design", text: "Create wireframes, mockups, and prototypes." },
+      { step: 4, title: "Testing", text: "Validate with users and iterate." },
+      { step: 5, title: "Delivery", text: "Hand-off assets and documentation." },
+    ],
+  },
+
   crm: {
     title: "CRM Development",
     subtitle: "Customer pipelines, tailored to your workflow",
