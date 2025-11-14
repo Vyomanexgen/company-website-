@@ -4,6 +4,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+
 
 const Logo = ({ theme, logoStyles }) => (
   <Link
@@ -186,13 +188,35 @@ export default function Navbar() {
         </ul>
 
         {/* Get Started (desktop) */}
-        <motion.button
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
-        >
-          Get Started
-        </motion.button>
+      <div className="flex items-center gap-4">
+         {/* Call */}
+  <motion.a
+    href="tel:+917358105293"
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    className="flex items-center gap-2 bg-blue-600 px-4 py-2 rounded-md text-white font-semibold shadow-md"
+  >
+    <FaPhoneAlt size={16} />
+    Call
+  </motion.a>
+
+  {/* WhatsApp */}
+  <motion.a
+    href="https://wa.me/917358105293?text=Hello%20Vyomanexgen%2C%20I%20want%20to%20know%20more."
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-md text-white font-semibold shadow-md"
+  >
+    <FaWhatsapp size={18} />
+    WhatsApp
+  </motion.a>
+
+ 
+
+</div>
+
       </div>
 
       {/* Mobile trigger */}
@@ -211,7 +235,10 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.35 }}
-            className={`fixed top-0 right-0 w-full h-screen flex flex-col items-center gap-10 p-10 ${mobileMenuStyles[theme]} md:hidden`}
+           className={`fixed top-0 right-0 w-full h-screen overflow-y-auto flex flex-col p-6 pt-14 ${mobileMenuStyles[theme]} md:hidden`}
+
+
+            //className={`fixed top-0 right-0 w-full h-screen flex flex-col items-center gap-10 p-10 ${mobileMenuStyles[theme]} md:hidden`}
           >
             {/* Top bar */}
             <div className="w-full flex justify-between items-center">
@@ -226,7 +253,8 @@ export default function Navbar() {
 
             {/* Links */}
            {/* Links */}
-          <ul className="flex flex-col items-center gap-8 text-2xl font-semibold">
+          <ul className="flex flex-col items-center gap-6 text-2xl font-semibold mt-4 mb-6">
+
             {navLinks.map((item) => (
               <li key={item.href} className="group">
                 <Link
@@ -255,13 +283,35 @@ export default function Navbar() {
           </ul>
 
             {/* Get Started (mobile) */}
-            <motion.button
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-md text-white font-semibold shadow-md hover:shadow-lg transition-all"
-            >
-              Get Started
-            </motion.button>
+           <div className="flex flex-col items-center gap-4 mb-10 w-full">
+
+  {/* WhatsApp Mobile */}
+  <motion.a
+    href="https://wa.me/919876543210"
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-md text-white font-semibold shadow-md justify-center w-[70%] max-w-[260px]"
+  >
+    <FaWhatsapp size={20} />
+    WhatsApp
+  </motion.a>
+
+  {/* Call Mobile */}
+  <motion.a
+    href="tel:+919876543210"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="flex items-center gap-2 bg-blue-600 px-4 py-2 rounded-md text-white font-semibold shadow-md justify-center w-[70%] max-w-[260px]"
+  >
+    <FaPhoneAlt size={18} />
+    Call
+  </motion.a>
+
+</div>
+
+
           </motion.div>
         )}
       </AnimatePresence>
