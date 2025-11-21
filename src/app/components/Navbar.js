@@ -437,7 +437,7 @@ export default function Navbar() {
                     `}
                   ></span>
                 </Link>
-              </li>
+              </li>   
             ))}
           </ul>
 
