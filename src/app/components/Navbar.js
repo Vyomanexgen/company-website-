@@ -278,7 +278,7 @@ export default function Navbar() {
                     `}
                   ></span>
                 </Link>
-              </li>
+              </li>   
             ))}
           </ul>
 
@@ -287,7 +287,7 @@ export default function Navbar() {
 
   {/* WhatsApp Mobile */}
   <motion.a
-    href="https://wa.me/919876543210"
+    href="https://wa.me/917358105293?text=Hello%20Vyomanexgen%2C%20I%20want%20to%20know%20more."
     target="_blank"
     rel="noopener noreferrer"
     whileHover={{ scale: 1.05 }}
@@ -300,7 +300,7 @@ export default function Navbar() {
 
   {/* Call Mobile */}
   <motion.a
-    href="tel:+919876543210"
+    href="tel:+917358105293"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     className="flex items-center gap-2 bg-blue-600 px-4 py-2 rounded-md text-white font-semibold shadow-md justify-center w-[70%] max-w-[260px]"
