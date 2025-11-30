@@ -5,9 +5,9 @@ import Navbar from "./Navbar";
 
 const testimonials = [
   {
-    name: "David Jones",
+    name: "AVR Director",
     text: "Amazing service! The team was professional and delivered beyond expectations. Highly recommended.",
-    image: "https://randomuser.me/api/portraits/men/32.jpg"
+    image: "https://www.directoravr.com/images/About1.jpg"
   },
   {
     name: "Sophia Lewis",
@@ -34,6 +34,7 @@ const testimonials = [
     text: "They understood exactly what I wanted and executed it perfectly. Great work!",
     image: "https://randomuser.me/api/portraits/women/12.jpg"
   }
+  
 ];
 
 export default function Testimonials() {
