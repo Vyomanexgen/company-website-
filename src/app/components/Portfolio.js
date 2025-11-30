@@ -191,9 +191,9 @@ import Navbar from "./Navbar.js";
 
 // --- MOCK DATA (for 3×3 layout) ---
 const completedProjects = [
-  { id: 1, title: "E-Commerce Platform", tag: "Web Development", imageUrl: "https://placehold.co/600x400/e2e8f0/333?text=Project+1" },
-  { id: 2, title: "Healthcare Mobile App", tag: "Mobile Development", imageUrl: "https://placehold.co/600x400/dbeafe/333?text=Project+2" },
-  { id: 3, title: "CRM Dashboard", tag: "CRM Development", imageUrl: "https://placehold.co/600x400/c7d2fe/333?text=Project+3" },
+  { id: 1, title: "AVR Cinemas Website", tag: "Web Development", imageUrl: "/avrlogo.jpg" },
+  { id: 2, title: "Organic Fruit Box Landing Website", tag: "Web Development", imageUrl: "https://organic-fruit-box.vercel.app/assets/organicFruit-p-ajoAUZ.jpg" },
+  { id: 3, title: "Mydukur Hotel Landing Website", tag: "Web Development", imageUrl: "https://mydukurhotel.netlify.app/assets/Logo-BOE60qbz.jpg" },
 //   { id: 4, title: "Data Analytics Hub", tag: "Data Science", imageUrl: "https://placehold.co/600x400/e0f2fe/333?text=Project+4" },
 //   { id: 5, title: "Travel Booking UI", tag: "Web App", imageUrl: "https://placehold.co/600x400/f0f9ff/333?text=Project+5" },
 //   { id: 6, title: "EdTech Dashboard", tag: "Web Development", imageUrl: "https://placehold.co/600x400/ddd6fe/333?text=Project+6" },
@@ -203,10 +203,10 @@ const completedProjects = [
 ];
 
 const ongoingProjects = [
-  { id: 10, title: "AI Recipe Planner", tag: "Web App", imageUrl: "https://placehold.co/600x400/fecaca/333?text=Ongoing+1" },
-  { id: 11, title: "Fintech Analytics Tool", tag: "Data Science", imageUrl: "https://placehold.co/600x400/fed7aa/333?text=Ongoing+2" },
-  { id: 12, title: "Logistics Tracker", tag: "Mobile App", imageUrl: "https://placehold.co/600x400/d9f99d/333?text=Ongoing+3" },
-//   { id: 13, title: "SaaS Platform", tag: "Web Development", imageUrl: "https://placehold.co/600x400/bfdbfe/333?text=Ongoing+4" },
+  { id: 10, title: "Bahupada ERP and E-Commerce Website and App", tag: "CRM Development", imageUrl: "/WhatsApp Image 2025-11-27 at 17.54.19_fe79ed35.jpg" },
+  { id: 11, title: "Rama & Rama Security Services", tag: "Web Development", imageUrl: "https://placehold.co/600x400/fed7aa/333?text=Ongoing+2" },
+  { id: 12, title: "Dinesh PVC Pipes Manufacturing & E-Commerce", tag: "Mobile App", imageUrl: "https://placehold.co/600x400/d9f99d/333?text=Ongoing+3" },
+ { id: 13, title: "Nelloriens", tag: "Mobile Development", imageUrl: "https://placehold.co/600x400/bfdbfe/333?text=Ongoing+4" },
 //   { id: 14, title: "Cloud Sync System", tag: "Cloud Computing", imageUrl: "https://placehold.co/600x400/e5e7eb/333?text=Ongoing+5" },
 //   { id: 15, title: "Fitness Tracker", tag: "Mobile App", imageUrl: "https://placehold.co/600x400/ffedd5/333?text=Ongoing+6" },
 //   { id: 16, title: "Voice Assistant", tag: "AI", imageUrl: "https://placehold.co/600x400/ddd6fe/333?text=Ongoing+7" },
