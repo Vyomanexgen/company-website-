@@ -3,61 +3,74 @@ import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 
+// ---------------- TESTIMONIAL DATA ----------------
 const testimonials = [
   {
-    name: "AVR Director",
-    text: "Amazing service! The team was professional and delivered beyond expectations. Highly recommended.",
-    image: "https://www.directoravr.com/images/About1.jpg"
+    title: "Organic Fruit Box",
+    name: "Parameshwar Reddy - Madhapur, Hyderabad, Telangana",
+    text: "The overall build is crisp and professional. The WhatsApp integration is exactly what our business needed for direct customer reach. Very satisfied."
   },
   {
-    name: "Sophia Lewis",
-    text: "The support and dedication throughout the project were incredible. I am truly impressed.",
-    image: "https://randomuser.me/api/portraits/women/45.jpg"
+    title: "Mydukur Hotel Landing Website",
+    name: "Mitta Sudhakar",
+    text: "The website feels polished and easy to navigate. The WhatsApp option adds a direct line for guests, which is exactly what we needed for quick inquiries."
   },
   {
-    name: "Chris Walker",
-    text: "Clean work, timely delivery and a friendly approach. A great experience overall.",
-    image: "https://randomuser.me/api/portraits/men/10.jpg"
+    title: "AVR Cinemas Website",
+    name: "AVR",
+    text: "The audition section is exactly what I needed. Clear fields, smooth submissions, and easy access to the profiles I want to review. Well-designed."
   },
   {
-    name: "Emily Carter",
-    text: "Their design and attention to detail gave my business a new professional look. Fantastic!",
-    image: "https://randomuser.me/api/portraits/women/68.jpg"
+    title: "Rama & Rama Security Services",
+    name: "Shravya",
+    text: "The site presents our security services with clarity and seriousness. It highlights our guard deployment, patrol services, and monitoring support in a clean way. Good work on capturing the tone of our industry."
   },
   {
-    name: "Daniel White",
-    text: "Very responsive and easy to communicate with. Would definitely work with them again.",
-    image: "https://randomuser.me/api/portraits/men/75.jpg"
+    title: "Dinesh PVC Pipes Manufacturing & E-Commerce",
+    name: "Dinesh",
+    text: "As the owner of Dinesh PVC Pipes, I’m happy with how the website turned out. Our products are displayed clearly, and the online ordering system works smoothly for our customers."
   },
   {
-    name: "Ava Brooks",
-    text: "They understood exactly what I wanted and executed it perfectly. Great work!",
-    image: "https://randomuser.me/api/portraits/women/12.jpg"
+    title: "Rajasekhar Art Jewellery E-Commerce",
+    name: "Sudarshan",
+    text: "As the owner, I’m happy with how the site displays our jewellery. The buying process is smooth and clear."
+  },
+  {
+    title: "Nelloriens",
+    name: "Shaik Munier",
+    text: "The site matches the identity of Nelloriens well. Customers can understand our offerings quickly."
   }
-  
 ];
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
+  const itemsPerSlide = 2;
 
-  // Auto-slide
+  // ---------------- AUTO SLIDE ----------------
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 2) % testimonials.length);
+      setIndex((prev) => {
+        const next = prev + itemsPerSlide;
+        return next >= testimonials.length ? 0 : next;
+      });
     }, 4000);
+
     return () => clearInterval(interval);
   }, []);
 
-  const visible = testimonials.slice(index, index + 2);
+  // ---------------- VISIBLE ITEMS ----------------
+  const visible = testimonials.slice(index, index + itemsPerSlide);
 
-  // Parallax Background
+  // ---------------- PARALLAX ----------------
   const { scrollY } = useScroll();
   const parallaxY = useTransform(scrollY, [0, 500], [0, 160]);
 
   return (
-    <section id="testimonials-section"  className="relative w-full min-h-screen overflow-hidden bg-black text-white">
-      
-      {/* Parallax Layer */}
+    <section
+      id="testimonials-section"
+      className="relative w-full min-h-screen overflow-hidden bg-black text-white"
+    >
+      {/* Parallax Background */}
       <motion.div
         style={{ y: parallaxY }}
         className="absolute inset-0 bg-black"
@@ -73,25 +86,25 @@ export default function Testimonials() {
             initial={{ x: -80, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ amount: 0.5 }}
             className="text-5xl font-extrabold mb-4 
             bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
           >
             Testimonials
           </motion.h2>
 
-          {/* Quote */}
+          {/* Subtitle */}
           <motion.p
             initial={{ x: -80, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ amount: 0.5 }}
             className="text-gray-300 max-w-2xl mx-auto mb-14 text-xl italic"
           >
             &ldquo;Your satisfaction is our greatest achievement — every experience tells a story.&rdquo;
           </motion.p>
 
-          {/* Slide Cards */}
+          {/* Cards Section */}
           <div className="relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -100,40 +113,29 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -80 }}
                 transition={{ duration: 0.7 }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-10"
+                className="grid gap-10 grid-cols-1 sm:grid-cols-2"
               >
                 {visible.map((t, i) => (
                   <motion.div
                     key={i}
-                    whileHover={{
-                      scale: 1.04,
-                      boxShadow: "0 0 25px #2596be",
-                    }}
+                    whileHover={{ scale: 1.03 }}
                     transition={{ type: "spring", stiffness: 200 }}
-                    className="bg-[#0d1c26] border border-[#2596be] p-8 rounded-2xl shadow-xl"
+                    className="bg-[#0d1c26] border border-[#2596be] p-8 rounded-2xl shadow-xl w-full"
                   >
-                    <img
-                      src={t.image}
-                      alt={t.name}
-                      className="w-24 h-24 mx-auto rounded-full border-4 border-[#2596be] mb-4 object-cover"
-                    />
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-[#2596be] mb-3 text-center">
+                      {t.title}
+                    </h3>
 
-                    <p className="text-sm leading-relaxed italic mb-4">
+                    {/* Review */}
+                    <p className="text-gray-300 leading-relaxed italic mb-6 text-center">
                       "{t.text}"
                     </p>
 
-                    <h4 className="font-semibold text-lg">{t.name}</h4>
-
-                    <div className="flex justify-center gap-1 mt-3">
-                      {[1,2,3,4,5].map((star) => (
-                        <img
-                          key={star}
-                          src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png"
-                          className="w-5 h-5"
-                          alt="star"
-                        />
-                      ))}
-                    </div>
+                    {/* Reviewer */}
+                    <h4 className="text-lg font-semibold text-center text-white">
+                      — {t.name}
+                    </h4>
                   </motion.div>
                 ))}
               </motion.div>
@@ -142,11 +144,15 @@ export default function Testimonials() {
 
           {/* Dots */}
           <div className="flex justify-center gap-2 mt-6">
-            {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, i) => (
+            {Array.from({
+              length: Math.ceil(testimonials.length / itemsPerSlide),
+            }).map((_, i) => (
               <div
                 key={i}
                 className={`w-3 h-3 rounded-full transition-all ${
-                  index / 2 === i ? "bg-[#2596be] scale-125" : "bg-gray-600"
+                  index / itemsPerSlide === i
+                    ? "bg-[#2596be] scale-125"
+                    : "bg-gray-600"
                 }`}
               ></div>
             ))}
@@ -154,7 +160,6 @@ export default function Testimonials() {
 
         </div>
       </div>
-
     </section>
   );
 }
