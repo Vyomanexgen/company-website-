@@ -247,7 +247,9 @@ export default function Navbar() {
           >
             {/* Top bar */}
             <div className="w-full flex justify-between items-center">
-              <Logo theme={theme} logoStyles={logoStyles} />
+                   <div className="h-12 w-30 flex items-center">
+            <img src="/vyomanexgen (1).png" alt="Vyomanexgen Logo" />
+          </div>
               <button
                 onClick={() => setMenuOpen(false)}
                 className="text-cyan-400 text-lg px-4 py-2"
