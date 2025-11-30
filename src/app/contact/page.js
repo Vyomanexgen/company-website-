@@ -219,7 +219,7 @@ import { useState } from "react";
 
 // ✅ EmailJS Credentials
 const SERVICE_ID = "service_nzz4dqu";
-const TEMPLATE_ID = "template_pqc0vc7";
+const TEMPLATE_ID = "template_c08rbip";
 const PUBLIC_KEY = "He_1j-g1lwbuF7wHb";
 
 // ✅ Validation Schema
@@ -258,15 +258,15 @@ export default function Contact() {
   //     });
   // };
 const onSubmit = (data) => {
-  const templateParams = {
-    user_name: data.fullName,
-    user_email: data.email,
-    user_phone: data.phone || "Not Provided",
-    user_services: data.service,
-    message: data.message,
-    timestamp: new Date().toLocaleString(),
-  };
-
+  const templateParams = {
+    user_name: data.fullName,
+    user_email: data.email,
+    user_phone: data.phone || "Not Provided",
+    user_company: data.company || "Not Provided", // <-- ADD THIS
+    user_service: data.service,                 // <-- RENAMED THIS
+    message: data.message,
+    timestamp: new Date().toLocaleString(),
+  };
   emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
     .then(() => {
       setSuccessMessage("Message Sent Successfully! We'll contact you soon.");

@@ -61,7 +61,7 @@ export default function Footer() {
             <motion.a
               whileHover={{ y: -6, boxShadow: "0 0 25px rgba(110,69,226,0.6)" }}
               transition={{ type: "spring", stiffness: 280 }}
-              href="https://www.threads.net/"
+              href="https://www.threads.com/@vyomanexgen?invite=0 "
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 flex items-center justify-center rounded-full 
