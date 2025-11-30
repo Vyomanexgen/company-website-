@@ -8,14 +8,16 @@ import { usePathname } from "next/navigation";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
 
-const Logo = ({ theme, logoStyles }) => (
-  <Link
-    href="/"
-    className={`text-xl md:text-3xl font-extrabold cursor-pointer ${logoStyles[theme]}`}
-  >
-    Vyomanexgen
+const Logo = ({ theme }) => (
+  <Link href="/" className="cursor-pointer flex items-center">
+    <img 
+      src="/vyomanexgen (1).png"   // <-- YOUR LOGO PATH HERE
+      alt="Vyomanexgen Logo"
+      className="h-10 w-auto md:h-14"
+    />
   </Link>
 );
+
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -59,7 +61,7 @@ export default function Navbar() {
     { name: "Home", href: "/", id: "home-section" },
     { name: "Services", href: "/#services-section", id: "services-section" },
     { name: "Portfolio", href: "/#portfolio-section", id: "portfolio-section" },
-    { name: "Careers", href: "/careers", id: "careers-page" },
+    //{ name: "Careers", href: "/careers", id: "careers-page" },
     { name: "Testimonials", href: "/#testimonials-section", id: "testimonials-section" },
     { name: "Contact", href: "/contact", id: "contact-section" },
   ];
@@ -156,7 +158,9 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 py-5 flex items-center justify-between transition-all duration-500 ${navStyles[theme]}`}
     >
       {/* Logo */}
-      <Logo theme={theme} logoStyles={logoStyles} />
+      <div className="h-14 w-60 flex items-center">
+            <img src="/vyomanexgen (1).png" alt="Vyomanexgen Logo" />
+          </div>
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-10">
