@@ -61,7 +61,7 @@ export default function Navbar() {
     { name: "Home", href: "/", id: "home-section" },
     { name: "Services", href: "/#services-section", id: "services-section" },
     { name: "Portfolio", href: "/#portfolio-section", id: "portfolio-section" },
-    { name: "Careers", href: "/careers", id: "careers-page" },
+    { name: "Careers", href: "https://careers.vyomanexgen.com/", id: "careers-page" },
     { name: "Testimonials", href: "/#testimonials-section", id: "testimonials-section" },
     { name: "Contact", href: "/contact", id: "contact-section" },
   ];
